@@ -1,4 +1,3 @@
-// Server.h
 #pragma once
 
 #include <winsock2.h>
@@ -27,5 +26,5 @@ private:
     SOCKET serverSocket;
     int port;
     std::vector<std::thread> clientThreads;
-    std::mutex dataMutex; // Если нужны разделяемые ресурсы
+    std::mutex dataMutex; // Г…Г±Г«ГЁ Г­ГіГ¦Г­Г» Г°Г Г§Г¤ГҐГ«ГїГҐГ¬Г»ГҐ Г°ГҐГ±ГіГ°Г±Г»
 };
