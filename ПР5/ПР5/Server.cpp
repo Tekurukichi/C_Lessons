@@ -1,8 +1,6 @@
-// Server.cpp
 #include "Server.h"
 
 Server::Server(int port) : port(port) {
-    // Initialize Winsock
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         throw std::runtime_error(GetErrorMessage(WSAGetLastError()));
