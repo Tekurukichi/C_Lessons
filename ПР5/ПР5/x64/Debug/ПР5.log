@@ -1,0 +1,8 @@
+﻿  Server.cpp
+D:\Workspace\С++\ПР5\ПР5\Server.cpp(59,69): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Workspace\С++\ПР5\ПР5\Server.cpp(96,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Client.cpp
+D:\Workspace\С++\ПР5\ПР5\Client.cpp(43,59): warning C4267: аргумент: преобразование из "size_t" в "int"; возможна потеря данных
+D:\Workspace\С++\ПР5\ПР5\Client.cpp(70,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  Создание кода...
+  ПР5.vcxproj -> D:\Workspace\С++\ПР5\x64\Debug\ПР5.exe
