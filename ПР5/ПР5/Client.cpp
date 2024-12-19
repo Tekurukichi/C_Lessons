@@ -1,17 +1,13 @@
-﻿// Client.cpp
 #include "Client.h"
 #include "Server.h"
 
 
 Client::Client(const std::string& serverAddress, int port) : serverAddress(serverAddress), port(port) {
-    // Initialize Winsock
     WSADATA wsaData;
     if (WSAStartup(MAKEWORD(2, 2), &wsaData) != 0) {
         std::cerr << "WSAStartup failed: " << GetErrorMessage(WSAGetLastError()) << std::endl;
         throw std::runtime_error("WSAStartup failed");
     }
-
-    // Create a socket
     clientSocket = socket(AF_INET, SOCK_STREAM, 0);
     if (clientSocket == INVALID_SOCKET) {
         std::cerr << "socket failed: " << GetErrorMessage(WSAGetLastError()) << std::endl;
@@ -25,7 +21,6 @@ Client::~Client() {
 }
 
 void Client::Connect() {
-    // Connect to server
     sockaddr_in serverAddr;
     serverAddr.sin_family = AF_INET;
 
@@ -61,7 +56,6 @@ std::string Client::SendRequest(const std::string& request) {
     }
 }
 std::string Client::GetErrorMessage(int errorCode) {
-    //  -- та же реализация, что и в Server::GetErrorMessage -- //
     LPWSTR messageBuffer = nullptr;
     FormatMessageW(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS,
         nullptr, errorCode, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT),
@@ -88,8 +82,6 @@ int main() {
 
         Client client("127.0.0.1", 12345);
         client.Connect();
-
-        // Example JSON request
         nlohmann::json jsonRequest;
         jsonRequest["command"] = "get_data";
         jsonRequest["parameter"] = 123;
@@ -100,8 +92,6 @@ int main() {
 
         if (!response.empty()) {
             std::cout << "Server Response: " << response << std::endl;
-
-            //Parse the response
             try {
                 nlohmann::json jsonResponse = nlohmann::json::parse(response);
                 std::cout << "Parsed response: " << jsonResponse["message"] << std::endl;
