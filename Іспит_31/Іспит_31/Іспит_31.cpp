@@ -5,7 +5,7 @@
 #define BUFFER_SIZE 4096
 
 int main() {
-    // Path to the input and output files
+    
     LPCTSTR inputFileName = _T("input.txt");
     LPCTSTR outputFileName = _T("output.txt");
 
@@ -16,11 +16,11 @@ int main() {
     BYTE buffer[BUFFER_SIZE];
     BOOL success = FALSE;
 
-    // Open the existing file for reading
+   
     hInputFile = CreateFile(
         inputFileName,
         GENERIC_READ,
-        0, // Do not share
+        0, 
         NULL,
         OPEN_EXISTING,
         FILE_ATTRIBUTE_NORMAL,
@@ -32,13 +32,13 @@ int main() {
         return 1;
     }
 
-    // Create or open the output file for writing
+   
     hOutputFile = CreateFile(
         outputFileName,
         GENERIC_WRITE,
-        0, // Do not share
+        0, 
         NULL,
-        CREATE_ALWAYS, // Create a new file or overwrite an existing one
+        CREATE_ALWAYS, 
         FILE_ATTRIBUTE_NORMAL,
         NULL
     );
@@ -49,7 +49,7 @@ int main() {
         return 1;
     }
 
-    // Read from the input file and write to the output file
+    
     do {
         success = ReadFile(
             hInputFile,
@@ -80,7 +80,7 @@ int main() {
         }
     } while (success && bytesRead > 0);
 
-    // Close file handles
+   
     if (hInputFile != INVALID_HANDLE_VALUE) {
         CloseHandle(hInputFile);
     }
